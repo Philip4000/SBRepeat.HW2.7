@@ -8,22 +8,28 @@
 import UIKit
 
 class ContactInfoViewController: UIViewController {
+    
+    @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var surnameLabel: UILabel!
+    @IBOutlet var phoneLabel: UILabel!
+    @IBOutlet var emailLabel: UILabel!
+    
+    @IBOutlet var fullyNameLabel: UILabel!
+    
+    var person: Person!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
+        
+        nameLabel.text = person.name
+        surnameLabel.text = person.surname
+        phoneLabel.text = person.phone
+        emailLabel.text = person.email
+        fullyNameLabel.text = person.fullyName
+        
+        navigationItem.title = person.fullyName
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
-    */
-
+    
 }

@@ -15,18 +15,32 @@ class TabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        transferData(from: contactList)
-        
-        
+        passingData()
+    
     }
 
 
-    private func transferData(from data: [Person]) {
-        let contactsVC = viewControllers?.first as! ContactsListViewController
-        let detailVC = viewControllers?.last as! ContactsDetailListViewController
+    private func passingData() {
         
-        contactsVC.contactList = data
-        detailVC.contactList = data
+        guard let viewControllers = viewControllers else {return}
+        
+        viewControllers.forEach {
+            if let listVC = $0 as? ContactsListViewController {
+                listVC.contactList = contactList
+            } else if let detailVC = $0 as? ContactsDetailListViewController {
+                detailVC.contactList = contactList
+            }
+            
+        }
+        
+//        let listVC = viewControllers?.first as! ContactsListViewController
+//        let detailVC = viewControllers?.last as! ContactsDetailListViewController
+//        
+//        listVC.contactList = contactList
+//        detailVC.contactList = contactList
+//        
+        
+        
     }
 
 }
